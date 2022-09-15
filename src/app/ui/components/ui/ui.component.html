@@ -1,0 +1,31 @@
+<header class="fixed-top">
+
+  <!-- utiliser ng-content pour projeter ce bouton -->
+  <!-- <button (click)='onSubmit()' >Open/close</button> -->
+
+  <span (click)='onSubmit()'>
+    <ng-content  select='.tr-btn'></ng-content>
+  </span>
+
+
+</header>
+<!-- [ngClass]={'class' : proprieteBooleenne } -->
+
+<main [ngClass]="{'close-aside' : !open}">
+  <div class="shadow position-fixed">
+  </div>
+  <aside>
+    <div class="scroller">
+      <ng-content select='.tr-nav'></ng-content>
+    </div>
+  </aside>
+  <div class="page">
+    <div class="contents">
+      Content
+    </div>
+    <footer>
+            <ng-content select='.tr-footer'></ng-content>
+    </footer>
+  </div>
+</main>
+

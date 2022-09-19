@@ -1,7 +1,12 @@
 <app-ui>
 <!-- placer app-header exactement où on veut dans app-ui -->
- <button class='tr-btn'>Open/Close</button>
+ <app-icon-close class='tr-btn-close'>Close</app-icon-close>
+ <app-icon-nav class='tr-btn-open'>Open</app-icon-nav>
+ <!-- utiliser router-outlet et le projeter dans app-ui -->
+ <router-outlet class='tr-router'></router-outlet>
  <app-header class='tr-header'></app-header>
  <app-nav class='tr-nav'></app-nav>
  <app-footer class='tr-footer'></app-footer>
 </app-ui>
+
+

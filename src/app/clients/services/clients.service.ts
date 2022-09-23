@@ -11,7 +11,7 @@ export class ClientsService {
   private collection$!: Observable<Client[]>;
 
   constructor(private http: HttpClient) {
-    this.collection = this.http.get<Client[]>('http://localhost:4002/clients');
+    this.collection = this.http.get<Client[]>('http://localhost:4004/clients');
   }
 
   // getter

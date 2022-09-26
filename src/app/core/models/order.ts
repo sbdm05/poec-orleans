@@ -9,6 +9,13 @@ export class Order {
   client!: string;
   comment!: string;
   id!: number;
+  // ici on ajoute directement les méthodes
+  totalHT(): number {
+    return this.tjmHt * this.nbJours;
+  }
+  totalTTC(): number {
+    return this.tjmHt * this.nbJours * (1 + this.tva / 100);
+  }
   constructor(obj?: Partial<Order>) {
     if (obj) {
       // Object.assign(objet Cible, obj Source )

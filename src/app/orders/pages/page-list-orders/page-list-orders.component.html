@@ -6,11 +6,41 @@ accepte également la propriété du parent
 
 <!-- dans ce composant, on a accès au tableau de commandes -->
 
-<app-template-full-width [title]="titleParent">
+<!-- ici, on affiche app-template-full-width que si collection returne true -->
+
+
+
+<!-- *ngIf='collection$ | async as collection' -->
+<app-template-full-width [title]="titleParent" *ngIf="collection$ | async as collection">
 
     <!-- essayer de faire passer votre tableau de commandes
      à app-table-light + verifier avec un console.log
     -->
-    <app-table-light [collection]='collectionParent' [headers]='headers'></app-table-light>
+    <app-table-light [headers]=' headers'>
+
+        <!-- ici on veut projeter toute la partie <td> -->
+        <!-- utilisation du ng-content dans app-table-light -->
+        <tr *ngFor='let item of collection '>
+            <!--table data cells (td)-->
+            <td>{{item.typePresta | uppercase }}</td>
+            <td>{{item.client}}</td>
+            <td>{{item.nbJours}}</td>
+            <td>{{item.tjmHt}}</td>
+            <td>{{item | total }}</td>
+            <td>{{item | total :true}}</td>
+            <td>
+                <!-- ici un menu déroulant -->
+                <select>
+                  <option
+                  *ngFor='let state of states'
+                  [value]="state"
+                  [selected]='state === item.state'
+                  >{{state}}</option>
+
+                </select>
+            </td>
+        </tr>
+
+    </app-table-light>
 
 </app-template-full-width>

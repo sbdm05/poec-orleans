@@ -1,2 +1,19 @@
-<tr>
-    <td></td>
+<!-- construire le tableau -->
+<table class="table">
+    <!-- thead utile pour le référencement -->
+    <thead>
+        <!-- table row (ligne) -->
+        <tr>
+            <!--   table header cells (th) -->
+            <!-- headers = ['id', 'tjm HT', 'tjm TTC'] -->
+            <!-- headers = ['name', 'statut', 'facture'] -->
+
+            <th *ngFor='let item of headers' scope="col">{{item}}</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <!-- tr = row = ligne -->
+        <ng-content></ng-content>
+    </tbody>
+</table>

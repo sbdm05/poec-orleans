@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { APP_INITIALIZER, Component, OnInit } from '@angular/core';
+import { ObjectUnsubscribedError, Observable } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { OrdersService } from '../../services/orders.service';
@@ -46,6 +46,28 @@ export class PageListOrdersComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  // méthode pour changer le state
+  public changeState(item: Order, event: Event) {
+    // console.log(item, 'changé');
+    // console.log(event);
+    const target = event.target as HTMLSelectElement;
+    // console.log(target);
+
+    const state = target.value as StateOrder;
+    // console.log(state)// CONFIRMED, CANCELLED, OPTION
+    // ici on fait un appel à une méthode dans le service
+    this.ordersService.changeState(item, state).subscribe((data) => {
+      console.log(data, 'renvoyé par API');
+
+      // modifier item
+      // Object.assign(objet initial, nouvel objet )
+      // on met à jour item côté affichage
+
+      // item = data;
+      Object.assign(item, data);
+    });
+  }
 
   // créer une méthode pour calculer TotalHT et totalTTC
   // remplacé par le pipe total

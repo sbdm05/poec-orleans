@@ -11,7 +11,7 @@ export class TotalPipe implements PipeTransform {
     // {{item | total}} HT
     // {{item | total :true }} TTC
 
-    console.log(item, 'item');
+    //console.log(item, 'item');
     // ajouter la condition et return val.totalHT ou val.totalTTC
     if (tva) {
       return item.totalTTC();

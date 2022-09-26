@@ -5,6 +5,8 @@ import { IconsModule } from '../icons/icons.module';
 import { BtnComponent } from './components/btn/btn.component';
 import { TableLightComponent } from './components/table-light/table-light.component';
 import { TotalPipe } from './pipes/total.pipe';
+import { StateDirective } from './directives/state.directive';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,9 +14,11 @@ import { TotalPipe } from './pipes/total.pipe';
   declarations: [
     BtnComponent,
     TableLightComponent,
-    TotalPipe
+    TotalPipe,
+    StateDirective
   ],
   imports: [
+    RouterModule,
     CommonModule
   ],
   exports: [
@@ -22,7 +26,8 @@ import { TotalPipe } from './pipes/total.pipe';
     IconsModule,
     BtnComponent,
     TableLightComponent,
-    TotalPipe
+    TotalPipe,
+    StateDirective
   ]
 })
 export class SharedModule { }

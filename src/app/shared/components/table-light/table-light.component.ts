@@ -13,18 +13,18 @@ export class TableLightComponent implements OnInit {
 
   // déclenché une seule fois
   constructor() {
-    console.log(this.collection); // undefined
-    console.log(this.headers, 'headers dans constructor'); // undefined
+    //console.log(this.collection); // undefined
+    //console.log(this.headers, 'headers dans constructor'); // undefined
   }
 
   // déclenché une seule fois
   ngOnInit(): void {
-    console.log(this.collection); // undefined
-    console.log(this.headers, 'headers dans ngOnInit'); // ???
+    //console.log(this.collection); // undefined
+    //console.log(this.headers, 'headers dans ngOnInit'); // ???
   }
 
   // déclenché plusieurs fois
   ngOnChanges() {
-    console.log(this.collection, 'test'); // OK
+    // console.log(this.collection, 'test'); // OK
   }
 }

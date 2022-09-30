@@ -22,30 +22,35 @@ accepte également la propriété du parent
         <!-- utilisation du ng-content dans app-table-light -->
         <tr *ngFor='let item of collection '>
             <!--table data cells (td)-->
-            <td>{{item.typePresta | uppercase }}</td>
-            <td>{{item.client}}</td>
-            <td>{{item.nbJours}}</td>
-            <td>{{item.tjmHt}}</td>
-            <td>{{item | total }}</td>
-            <td>{{item | total :true}}</td>
-            <!-- [ngClass]="{'state-option': item.state === 'OPTION' }" -->
-            <!-- <td [ngClass]="{
+            <td>
+                <app-icon-edit (click)='onEdit(item)'></app-icon-edit>
+                <!-- ajouter un événement au clic -->
+                <!-- afficher un console.log -->
+                <app-icon-delete></app-icon-delete>
+                <td>{{item.typePresta | uppercase }}</td>
+                <td>{{item.client}}</td>
+                <td>{{item.nbJours}}</td>
+                <td>{{item.tjmHt}}</td>
+                <td>{{item | total }}</td>
+                <td>{{item | total :true}}</td>
+                <!-- [ngClass]="{'state-option': item.state === 'OPTION' }" -->
+                <!-- <td [ngClass]="{
               'state-option': item.state === 'OPTION',
               'state-cancelled': item.state === 'CANCELLED',
               'state-confirmed': item.state === 'CONFIRMED'
             }"> -->
-            <td appState [etat]='item.state'>
+                <td appState [etat]='item.state'>
 
-                <!-- ici un menu déroulant -->
+                    <!-- ici un menu déroulant -->
 
-                <select (change)='changeState(item, $event)'>
+                    <select (change)='changeState(item, $event)'>
                     <option
                     *ngFor='let state of states'
                     [value]="state"
                     [selected]='state === item.state'>{{state}}</option>
 
                 </select>
-            </td>
+                </td>
         </tr>
 
     </app-table-light>

@@ -17,7 +17,7 @@ const routes: Routes = [
 
   // PageEditOrderComponent
   // localhost:4200/orders/edit
-  { path: 'edit', component: PageEditOrderComponent },
+  { path: 'edit/:id', component: PageEditOrderComponent },
 ];
 
 @NgModule({

@@ -1,1 +1,7 @@
-<p>page-add-order works!</p>
+<app-template-full-width [title]='titleParent'>
+    <app-form-order [init]='item' (submitted)='onAdd($event)'></app-form-order>
+</app-template-full-width>
+
+<!-- créer un nouvel objet de type new Order -->
+<!-- passer ce nouvel objet à app-form-order -->
+<!-- vérifier dans ce composant -->

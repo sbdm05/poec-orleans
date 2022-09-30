@@ -1,5 +1,6 @@
-import { APP_INITIALIZER, Component, OnInit } from '@angular/core';
-import { ObjectUnsubscribedError, Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { OrdersService } from '../../services/orders.service';
@@ -23,6 +24,7 @@ export class PageListOrdersComponent implements OnInit {
   // créer un tableau avec les en-têtes
   // envoyer headers à app-table-light + verifier
   public headers: string[] = [
+    'Action',
     'Type',
     'Client',
     'NbJours',
@@ -32,7 +34,10 @@ export class PageListOrdersComponent implements OnInit {
     'State',
   ];
 
-  constructor(private ordersService: OrdersService) {
+  constructor(
+    private ordersService: OrdersService,
+    private router: Router
+    ) {
     // déclencher le getter
     // remplacer le .subscribe par le pipe async
     // cela ne devrait rien changer à votre affichage
@@ -78,4 +83,14 @@ export class PageListOrdersComponent implements OnInit {
   //   }
   //   return val * coef;
   // }
+
+  public onEdit(item: Order) {
+    console.log(item, 'edit cliqué');
+    // route localhost/orders/edit/item.id
+    this.router.navigate(['orders', 'edit', item.id])
+  }
+
+  public onDelete(){
+    // faire appel au service
+  }
 }

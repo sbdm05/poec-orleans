@@ -13,22 +13,19 @@ export class OrdersService {
   // urlApi
   private urlApi = environment.urlApi;
 
-
   // ici on veut faire un appel http
 
   // définir une propriété
   private collection$!: Observable<Order[]>;
 
   constructor(private http: HttpClient) {
-    this.collection = this.http
-      .get<Order[]>(`${this.urlApi}/orders`)
-      .pipe(
-        map((tab) => {
-          return tab.map((obj) => {
-            return new Order(obj);
-          });
-        })
-      );
+    this.collection = this.http.get<Order[]>(`${this.urlApi}/orders`).pipe(
+      map((tab) => {
+        return tab.map((obj) => {
+          return new Order(obj);
+        });
+      })
+    );
   }
 
   // getter  this.ordersService.collection.subscribe(data=>{})
@@ -61,5 +58,15 @@ export class OrdersService {
     // appel API
     // return this.http.put('url/id', obj) obj.id
     return this.http.put<Order>(`${this.urlApi}/orders/${obj.id}`, obj);
+  }
+
+  add(item: Order): Observable<Order> {
+    // this.http.post('url', item)
+    return this.http.post<Order>(`${this.urlApi}/orders`, item);
+  }
+
+  getItemById(id: number): Observable<Order> {
+    // this.http.get('url/id')
+    return this.http.get<Order>(`${this.urlApi}/orders/${id}`);
   }
 }
